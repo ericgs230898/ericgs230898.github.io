@@ -6,16 +6,15 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet"></head>
 <body>
+	<h1>Your Top Artists</h1>
 	<div class="container">
-		<label>Limit</label>
-		<input id="inputLimitValue" type="number" min="1" max="50" name="Limit" value="">
-		<label>Term</label>
-		<select id="inputTermValue" name="Term">
-		    <option value="long_term">Long Term</option>
-		    <option value="medium_term">Medium Term</option>
-		    <option value="short_term">Short Term</option>
-	 	</select>
-		<button id="bTopArtists"> Search </button>
+		<label class="container_item">Results</label>
+		<input class="container_item" id="inputLimitValue" type="number" min="1" max="50" name="Limit" value="20">
+		<div class="container_item">
+			<a id="bAllTime">All Time</a>
+			<a id="b6Months">Last 6 Months</a>
+			<a id="bLastMonth">Last Month</a>
+		</div>
 	</div>
 
 	<ol id="listaArtistas">

@@ -3,18 +3,52 @@ var bTopArtists = document.getElementById("bTopArtists");
 
 var listaArtistas = document.getElementById("listaArtistas");
 
-bTopArtists.onclick = function() {
+var allTime, last6Months, lastMonth;
+allTime = document.getElementById("bAllTime");
+last6Months = document.getElementById("b6Months");
+lastMonth = document.getElementById("bLastMonth");
+
+allTime.className = "active";
+TopArtistasOnClick();
+
+allTime.onclick = function() {
+	allTime.className = "active";
+	lastMonth.className = "";
+	last6Months.className = "";
+	TopArtistasOnClick();
+}
+
+last6Months.onclick = function() {
+	allTime.className = "";
+	lastMonth.className = "";
+	last6Months.className = "active";
+	TopArtistasOnClick();
+}
+
+lastMonth.onclick = function() {
+	allTime.className = "";
+	lastMonth.className = "active";
+	last6Months.className = "";
+	TopArtistasOnClick();
+}
+
+
+function TopArtistasOnClick () {
 	while( listaArtistas.firstChild ){
   		listaArtistas.removeChild( listaArtistas.firstChild );
 	}
 	var limit = inputLimitValue.value;
-	var term = inputTermValue.value;
+	var term = "";
+	if ( lastMonth.className == "active") term = "short_term";
+	else if ( last6Months.className == "active") term = "medium_term";
+	else term = "long_term";
+
 	var json;
 
 	if(limit > 50 ) limit = 50;
 	else if ( limit == '' ) limit = 20;
 
-	if(term == 'long_term' || term == '' ) {
+	if(term == 'long_term') {
 		json = JSON.parse(miStorage.getItem('topArtistsLongTerm'));
 	}
 	else if ( term == 'medium_term') {
