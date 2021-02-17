@@ -69,8 +69,8 @@ function TopArtistasOnClick () {
 		width = image.width;
 		height = image.height;
 		var position = i+1;
-		if ( width > height || json.items[i].name == 'El Alfa' ) innerHTML = '<p class="artistsName"> ' + json.items[i].name + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '"class="profile-pic2"></div><div class="artistData"><p> Popularity: ' + popularity + '</p>';
-		else innerHTML = '<p class="artistsName"> ' + json.items[i].name + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '"class="profile-pic"></div><div class="artistData"><p> Popularity: ' + popularity + '</p>';
+		if ( width > height || json.items[i].name == 'El Alfa' ) innerHTML = '<p class="artistsName"> ' + json.items[i].name + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '"" title="' + json.items[i].name +'" class="profile-pic2"></div><div class="artistData"><p> Popularity: ' + popularity + '</p>';
+		else innerHTML = '<p class="artistsName"> ' + json.items[i].name + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '"" title="' + json.items[i].name +'"class="profile-pic"></div><div class="artistData"><p> Popularity: ' + popularity + '</p>';
 		var li = document.createElement("li");
 		li.className = 'item';
 		li.innerHTML = innerHTML;

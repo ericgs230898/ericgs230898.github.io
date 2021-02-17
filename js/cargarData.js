@@ -50,21 +50,24 @@ function getImagesFromArtists(json, recently){
 		}
 	}
 	for (var i = 0; i < arrayIdsArtists.length; i++) {
-		if ( arrayIdsArtists[i] == '1GKIlPFdcewHtpDVCQ8zmJ') console.log("BRAY llega1");
 		loadDataFromSpotifyDB('https://api.spotify.com/v1/artists/'+ arrayIdsArtists[i], function(request) {
 			var json = JSON.parse(request.responseText);
 			var name = json.name;
-			if ( name == 'Aczino') console.log(json);
-			var image = json.images[0];
-			var height, width;
-			if ( image != undefined ) {
-				url = image.url;
-				height = image.height;
-				width = image.width;
-				if ( width < height ) url = url + 'H'; // MORE Height
-				else url = url + 'N' // NORMAL
+			if ( name == "AMMUNATION" ) console.log(json);
+			if ( json.images.length > 0 ){
+				var image = json.images[0];
+				var height, width;
+				if ( image != undefined ) {
+					url = image.url;
+					height = image.height;
+					width = image.width;
+					if ( width < height ) url = url + 'H'; // MORE Height
+					else url = url + 'N'; // NORMAL
+					miStorage.setItem(name,url);
+				}
 			}
-			miStorage.setItem(name,url);
+			else miStorage.setItem(name, null);
+			
 		});
 	}
 }

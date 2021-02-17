@@ -21,7 +21,6 @@ allTime.onclick = function() {
 }
 
 last6Months.onclick = function() {
-	console.log("Entro");
 	allTime.className = "";
 	lastMonth.className = "";
 	last6Months.className = "active";
@@ -66,21 +65,23 @@ function TopTracksOnClick () {
 		if ( artistsLength == 1 ) {
 			artists = json.items[i].artists[0].name;
 			var item = miStorage.getItem(artists); 
-			if ( item != null ) {
-				var link = item.slice(0, -1);
-				if ( item[item.length-1] == 'H') position = position + '<div class="image-cropper"><img src="' + link + '" class="profile-pic"></div>';
-				else position = position + '<div class="image-cropper"><img src="' + link + '" class="profile-pic"></div>';
+			if ( item != null && item != undefined ) {
+				var link = item.slice(0, -1);			//+ '"" title="' + json.items[i].name +'"
+				if ( item[item.length-1] == 'H') position = position + '<div class="image-cropper"><img src="' + link + '" title="' + artists + '" class="profile-pic"></div>';
+				else position = position + '<div class="image-cropper"><img src="' + link  + '" title="' + artists + '" class="profile-pic"></div>';
 			}
 		}
-		else {
+		else if ( artistsLength > 1 ){
 			for ( var j=0; j<artistsLength; j++ ) {
 				var name = json.items[i].artists[j].name;
-				var item = miStorage.getItem(name); 
-				if ( item != null ) {
+				var item = miStorage.getItem(name);
+				if ( item != "null" &&  item != "undefined") {
 					var link = item.slice(0, -1);
-					console.log(link);
-					if ( item[item.length-1] == 'H') position = position + '<div class="image-cropper"><img src="' + link + '" class="profile-pic2"></div>';
-					else position = position + '<div class="image-cropper"><img src="' + link + '" class="profile-pic"></div>';
+					console.log(name + " - " + item);
+
+					//console.log(link);
+					if ( item[item.length-1] == 'H') position = position + '<div class="image-cropper"><img src="' + link  + '" title="' + name + '" class="profile-pic2"></div>';
+					else position = position + '<div class="image-cropper"><img src="' + link + '" title="' + name + '" class="profile-pic"></div>';
  //innerHTML = '<p class="artistsName"> ' + json.items[i].name + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '"class="profile-pic"></div><div class="artistData"><p> Popularity: ' + popularity + '</p>';
 
 				}

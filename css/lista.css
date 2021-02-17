@@ -97,12 +97,13 @@ li.item::marker {
 
 
 .image-cropper {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
     color: white;
     background-color: 777777;
     display: inline-block;
     margin-right: 10px;
     margin-left: 10px;
+    margin-top: 5px;
     width: 100px;
     height: 100px;
     overflow: hidden;
