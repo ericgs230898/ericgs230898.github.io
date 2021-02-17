@@ -3,7 +3,8 @@ var rangeBullet = document.getElementById("rs-bullet");
 
 rangeSlider.addEventListener("input", showSliderValue, false);
 rangeSlider.onchange = function() {
-	TopArtistasOnClick();
+	if ( document.title == "Top Tracks") TopTracksOnClick();
+	else TopArtistasOnClick();
 }
 
 function showSliderValue() {

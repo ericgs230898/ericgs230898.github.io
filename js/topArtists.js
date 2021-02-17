@@ -68,14 +68,15 @@ function TopArtistasOnClick () {
 		var width, heigth;
 		width = image.width;
 		height = image.height;
-		console.log( width + " + " + height);
 		var position = i+1;
-		if ( width > height || json.items[i].name == 'El Alfa' ) innerHTML = '<p class="artistsName"> Position: ' + position + ' - '  + json.items[i].name + ' Popularity: ' + popularity + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '" class="profile-pic2"></div>';
-		else innerHTML = '<p class="artistsName"> Position: ' + position + ' - ' + json.items[i].name + ' Popularity: ' + popularity + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '" class="profile-pic"></div>';
+		if ( width > height || json.items[i].name == 'El Alfa' ) innerHTML = '<p class="artistsName"> ' + json.items[i].name + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '"class="profile-pic2"></div><div class="artistData"><p> Popularity: ' + popularity + '</p>';
+		else innerHTML = '<p class="artistsName"> ' + json.items[i].name + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '"class="profile-pic"></div><div class="artistData"><p> Popularity: ' + popularity + '</p>';
 		var li = document.createElement("li");
 		li.className = 'item';
 		li.innerHTML = innerHTML;
 		listaArtistas.appendChild(li);
 	}
 }
+
+
 

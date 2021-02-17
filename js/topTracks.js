@@ -3,12 +3,47 @@ var bTopTracks = document.getElementById("bTopTracks");
 
 const miStorage = window.localStorage;
 
-bTopTracks.onclick = function() {
+var allTime, last6Months, lastMonth;
+allTime = document.getElementById("bAllTime");
+last6Months = document.getElementById("b6Months");
+lastMonth = document.getElementById("bLastMonth");
+
+var limitElement = document.getElementById("rs-bullet");
+
+allTime.className = "active";
+TopTracksOnClick();
+
+allTime.onclick = function() {
+	allTime.className = "active";
+	lastMonth.className = "";
+	last6Months.className = "";
+	TopTracksOnClick();
+}
+
+last6Months.onclick = function() {
+	console.log("Entro");
+	allTime.className = "";
+	lastMonth.className = "";
+	last6Months.className = "active";
+	TopTracksOnClick();
+}
+
+lastMonth.onclick = function() {
+	allTime.className = "";
+	lastMonth.className = "active";
+	last6Months.className = "";
+	TopTracksOnClick();
+}
+
+function TopTracksOnClick () {
 	while( listaTracks.firstChild ){
   		listaTracks.removeChild( listaTracks.firstChild );
 	}
-	var limit = inputLimitValue.value;
-	var term = inputTermValue.value;
+	var limit = limitElement.innerHTML;
+	var term = "";
+	if ( lastMonth.className == "active") term = "short_term";
+	else if ( last6Months.className == "active") term = "medium_term";
+	else term = "long_term";
 
 	if(limit > 50 ) limit = 50;
 	else if ( limit == '' ) limit = 20;
@@ -46,6 +81,8 @@ bTopTracks.onclick = function() {
 					console.log(link);
 					if ( item[item.length-1] == 'H') position = position + '<div class="image-cropper"><img src="' + link + '" class="profile-pic2"></div>';
 					else position = position + '<div class="image-cropper"><img src="' + link + '" class="profile-pic"></div>';
+ //innerHTML = '<p class="artistsName"> ' + json.items[i].name + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '"class="profile-pic"></div><div class="artistData"><p> Popularity: ' + popularity + '</p>';
+
 				}
 				if ( (artistsLength-1) == j ) artists = artists + name;
 				else artists = artists + name + ", ";
@@ -53,7 +90,7 @@ bTopTracks.onclick = function() {
 		}
 		var li = document.createElement("li");
 		li.className = 'item';
-		li.innerHTML = '<p>' + json.items[i].name + ' - ' + artists + " - Popularity:" + popularity + position;
+		li.innerHTML = '<p>' + json.items[i].name + ' - ' + artists + position + '<div class="artistsData2"><p> Popularity: ' + popularity + '</p></div>';
 		listaTracks.appendChild(li);
 	}
 }
