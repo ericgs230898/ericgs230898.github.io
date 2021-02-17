@@ -2,8 +2,9 @@
 <html>
 <head>
 	<title>Top Artists</title>
-	<link rel="stylesheet" type="text/css" href="../css/preloader.css">
 	<link rel="stylesheet" type="text/css" href="../css/lista.css">
+	<link rel="stylesheet" type="text/css" href="../css/menu.css">
+	<link rel="stylesheet" type="text/css" href="../css/slider.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet"></head>
 <body>
@@ -16,14 +17,21 @@
 		</ul>
 	</nav>
 
-	<h1>Your Top Artists</h1>
+	<h1 class="titleSection">Your Top Artists</h1>
 	<div class="container">
-		<label class="container_item">Results</label>
-		<input class="container_item" id="inputLimitValue" type="number" min="1" max="50" name="Limit" value="20">
-		<div class="container_item">
-			<a id="bAllTime">All Time</a>
-			<a id="b6Months">Last 6 Months</a>
-			<a id="bLastMonth">Last Month</a>
+		<div id="left" class="container_item">
+			<li><a class="option">Results</a></li>
+			<div class="containerslider"> 
+				<div class="range-slider">
+				    <span id="rs-bullet" class="rs-label" style="left:38.4px;">20</span>
+				    <input id="rs-range-line" class="rs-range" type="range" value="20" min="1" max="50">
+			 	</div>	  
+			</div>
+		</div>
+		<div id="right" class="container_item">
+			<li><a class="option" id="bAllTime">All Time</a></li>
+			<li><a class="option" id="b6Months">Last 6 Months</a></li>
+			<li><a class="option" id="bLastMonth">Last Month</a></li>
 		</div>
 	</div>
 
@@ -31,5 +39,6 @@
 	</ol>
 
 	<script src="../js/topArtists.js" type="text/javascript"></script>
+	<script src="../js/slider.js" type="text/javascript"></script>
 </body>
 </html>

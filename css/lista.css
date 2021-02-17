@@ -16,29 +16,57 @@ ol {
 
 .container {
   width: 100%;
-}
-.container_item {
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 90px;
   float: right;
-  color: white;
-  text-decoration: none;
-  font-family: "GothamBook", sans-serif;
+}
+
+.container div {
+  display: inline-block;
+}
+
+.container_item li {
+  height: 100%;
+  display: inline-block;
 }
 
 li.item::marker {
   color: #1db954;
 }
 
+#right{
+  float: right;
+  margin-top: 30px;
+
+}
+
+#inputTextNumber {
+  border-style: none;
+}
+
+#right a {
+  padding: 15px 15px;
+  margin: 10px;
+  margin: 4px 2px; 
+}
+#left {
+  margin-left: 20px;
+}
+
+#left a {
+  padding: 15px 5px;
+  margin: 4px 5px;
+}
+
 .container .container_item a {
   background-color: transparent;
   border: none;
   color: white;
-  padding: 15px 15px;
-  margin: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
   cursor: pointer;
 }
 
@@ -51,11 +79,7 @@ li.item::marker {
 .container .container_item .active{
   border-bottom: 2px solid white;
 }
-/*.item img {
-  border-radius: 50%;
-  height: 100px;
-  width: 100px;
-}*/
+
 
 .image-cropper {
   margin-bottom: 5px;
@@ -86,3 +110,11 @@ li.item::marker {
 }
 
 
+.titleSection {
+  margin-left: 10px;
+}
+
+#inputTextNumber{
+  width: 30px;
+  text-align: center;
+}

@@ -1,4 +1,4 @@
-const tokenAuth = 'Bearer BQB4-X9tA1FF6sZLn6tYSW58mHQcI4WRl_Ebt0o9qIrPomj-91pI5RSrR-gb0dcqNDZnXyWbf2Bv5LOtbg1jGPRhWeYiltgf6Hq616ZJRsm66gX1Zm0E0pSioDqh6KaRGbRjFyk0WS5pfENfKHoTKJI7ptV_yKjaCZZDCFRRtVlr9DWG4BIAPJY86ivWcwpz1Drm7CGrNDslXQwhPJ0enC6ikCMnEvmwnDi2tiBULL2Y3pFZty1dKJbRk4O90Y5wRbLR0KzvrhgT1g';
+const tokenAuth = 'Bearer BQC3DL5KhEmNVFkA023MLQRiDayui7X2KxCkI1bWbNCgPYqHE83V2caCGdWaJrPJ1GkFMJDWxYkcBeQr6HHlyApMtXV_XOluj0fEepj3_u_ksB5cgViiv2vtp8ALCtsXULCPPOfaLrUxREabelCDF2qXEUuYSqNxlLdBFQm1YcAIQ4qZzlAshlaFRw9kb56gecQ1lt_10CrZC-HReXzi429h94idTWNPuSZYLS4ZgtUFXSs4k2r1wfOy8uw5sOe4dDaM5Hpfybpy7w';
 const LONG_TERM = 'long_term';
 const MEDIUM_TERM = 'medium_term';
 const SHORT_TERM = 'short_term';
@@ -7,13 +7,15 @@ const miStorage = window.localStorage;
 
 var imagesURLS = [];
 
+if ( miStorage.getItem("firstTime") ) document.getElementById("classLoader").remove();
 
 var targetObj = {};
 var targetProxy = new Proxy(targetObj, {
   set: function (target, key, value) {
       	
       if ( targetProxy.countInfoSaved == 6 ) {
-      	setTimeout(() => { document.getElementById("classLoader").remove();}, 1000)};
+      	setTimeout(() => { document.getElementById("classLoader").remove();
+      						miStorage.setItem("firstTime", true)}, 1000)};
       target[key] = value;
       return true;
   }

@@ -8,6 +8,8 @@ allTime = document.getElementById("bAllTime");
 last6Months = document.getElementById("b6Months");
 lastMonth = document.getElementById("bLastMonth");
 
+var limitElement = document.getElementById("rs-bullet");
+
 allTime.className = "active";
 TopArtistasOnClick();
 
@@ -37,7 +39,8 @@ function TopArtistasOnClick () {
 	while( listaArtistas.firstChild ){
   		listaArtistas.removeChild( listaArtistas.firstChild );
 	}
-	var limit = inputLimitValue.value;
+
+	limit = limitElement.innerHTML;
 	var term = "";
 	if ( lastMonth.className == "active") term = "short_term";
 	else if ( last6Months.className == "active") term = "medium_term";
@@ -67,8 +70,8 @@ function TopArtistasOnClick () {
 		height = image.height;
 		console.log( width + " + " + height);
 		var position = i+1;
-		if ( width > height || json.items[i].name == 'El Alfa' ) innerHTML = '<p class="artistsName">' + json.items[i].name + ' Popularity: ' + popularity + ' Position:' + position + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '" class="profile-pic2"></div>';
-		else innerHTML = '<p class="artistsName">' + json.items[i].name + ' Popularity: ' + popularity + ' Position:' + position + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '" class="profile-pic"></div>';
+		if ( width > height || json.items[i].name == 'El Alfa' ) innerHTML = '<p class="artistsName"> Position: ' + position + ' - '  + json.items[i].name + ' Popularity: ' + popularity + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '" class="profile-pic2"></div>';
+		else innerHTML = '<p class="artistsName"> Position: ' + position + ' - ' + json.items[i].name + ' Popularity: ' + popularity + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '" class="profile-pic"></div>';
 		var li = document.createElement("li");
 		li.className = 'item';
 		li.innerHTML = innerHTML;
