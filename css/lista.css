@@ -10,7 +10,7 @@ body {
 }
 
 ol {
-  margin-top: 20px;
+  margin-top: 100px;
   padding-top: 20px;
   width: 70%;
   margin-left: auto;
@@ -20,6 +20,9 @@ ol {
 ol li {
   border-bottom: 1px solid #1db954;
   margin-top: 10px;
+  height: auto;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .container {
@@ -87,7 +90,7 @@ li.item::marker {
 .artistsData2 {
     display: inline-block;
     text-align: center;
-    height: 100px;
+    height: auto;
     float: right;
 }
 
@@ -98,17 +101,17 @@ li.item::marker {
 
 .image-cropper {
   margin-bottom: 8px;
-    color: white;
-    background-color: 777777;
-    display: inline-block;
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-top: 5px;
-    width: 100px;
-    height: 100px;
-    overflow: hidden;
-    position: relative;
-    border-radius: 50%;
+  color: white;
+  background-color: 777777;
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 8px;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
 }
 .profile-pic {
   color: white;

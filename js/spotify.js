@@ -46,33 +46,7 @@ bTopArtists.onclick = function() {
 }
 
 
-bRecentlyPlayed.onclick = function() {
-	while( listaRecientes.firstChild ){
-  		listaRecientes.removeChild( listaRecientes.firstChild );
-	}
-	var limit = inputLimitValue.value;
-	if(limit > 50 ) limit = 50;
-	else if ( limit == '' ) limit = 20;
 
-	var json = JSON.parse(miStorage.getItem('recentlyPlayed'));
-	var innerHTML = "";
-	for ( var i=0; i<limit; i++ ) {
-		var artists = "";
-		var artistsLength = json.items[i].track.artists.length;
-		var popularity = json.items[i].track.popularity;
-		if ( artistsLength == 1 ) artists = json.items[i].track.artists[0].name;
-		else {
-			for ( var j=0; j<artistsLength; j++ ) {
-				if ( (artistsLength-1) == j ) artists = artists + json.items[i].track.artists[j].name;
-				else artists = artists + json.items[i].track.artists[j].name + ", ";
-			}
-		}
-		var li = document.createElement("li");
-		li.className = 'item';
-		li.innerHTML = json.items[i].track.name + " - " + artists + " Popularity: " + popularity;
-		listaRecientes.appendChild(li);
-	}
-}
 
 
 
