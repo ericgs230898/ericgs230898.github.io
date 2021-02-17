@@ -66,8 +66,9 @@ function TopArtistasOnClick () {
 		width = image.width;
 		height = image.height;
 		console.log( width + " + " + height);
-		if ( width > height || json.items[i].name == 'El Alfa' ) innerHTML = '<p>' + json.items[i].name + ' Popularity: ' + popularity + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '" class="profile-pic2"></div>';
-		else innerHTML = '<p>' + json.items[i].name + ' Popularity: ' + popularity + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '" class="profile-pic"></div>';
+		var position = i+1;
+		if ( width > height || json.items[i].name == 'El Alfa' ) innerHTML = '<p class="artistsName">' + json.items[i].name + ' Popularity: ' + popularity + ' Position:' + position + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '" class="profile-pic2"></div>';
+		else innerHTML = '<p class="artistsName">' + json.items[i].name + ' Popularity: ' + popularity + ' Position:' + position + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '" class="profile-pic"></div>';
 		var li = document.createElement("li");
 		li.className = 'item';
 		li.innerHTML = innerHTML;
