@@ -36,7 +36,8 @@ function RecentlyPlayedOnClick () {
 			for ( var j=0; j<artistsLength; j++ ) {
 				var name = json.items[i].track.artists[j].name;
 				var item = miStorage.getItem(name);
-				if ( item != "null" &&  item != "undefined") {
+				if ( item != "null" &&  item != "undefined" && item != null & item != undefined) {
+					console.log(item);
 					var link = item.slice(0, -1);
 					console.log(name + " - " + item);
 

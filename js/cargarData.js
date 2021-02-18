@@ -1,9 +1,15 @@
-const tokenAuth = 'Bearer BQB6N8dzNMcZcRLT-8EDCWz1q2KIE5Mievty6rqxFlfaEOfBpJ9Qn0zLQ48Hpo6apS6TTBucJrHQZTuQ5emgmfkKnDKLNVuMzYlM7fEzV1bQ7zQf2F9fHfwGxZWT2Z7v9-3Y8yE3wR9_-5HpbaD4jZKtAQCHXFbP-ztMYrn6iXb-r81sfvNLfvbJKyr9dIMjfKMDI0FK8vL8R4cDIOp4Iw-nXOKsXlvhxcOz07Qs6t7LnJ9-9rqxHYpqFleiRjr-UHk02Av7h56wnQ';
-const LONG_TERM = 'long_term';
+/*const LONG_TERM = 'long_term';
 const MEDIUM_TERM = 'medium_term';
 const SHORT_TERM = 'short_term';
 
+
+
 const miStorage = window.localStorage;
+
+var tokenAuth = 'Bearer BQCrl5ntGYRLD2R7CWsWsaHSKuCi2XbfTmZJ_eZ-LIY-Vl_3hC0mi-oU7g1_3gywKO66QaBqd0rpfSLhk86HRlsiDioB6VWfyEQKTP1Xskh2Jfna90kb1bN9JFlWln8kn7QK8tOvsG7H62st_OdBYRVVW98xnSt-RBmkAL_j71SiqKTmv2u4DbNX4j8RU0dHngP_YoE69AN5P0W75ieGckudTIAlt547KYTChiSaT1OFjmu_YimgJZuylcIcHwF5CEEqC7BzC_RdTA';
+
+
+
 
 var imagesURLS = [];
 
@@ -117,3 +123,4 @@ function getRecentlyPlayedTracksFromUser(){
 getTopArtistsFromUser();
 getTopTracksFromUser();
 getRecentlyPlayedTracksFromUser();
+*/

@@ -77,9 +77,6 @@ function TopTracksOnClick () {
 				var item = miStorage.getItem(name);
 				if ( item != "null" &&  item != "undefined") {
 					var link = item.slice(0, -1);
-					console.log(name + " - " + item);
-
-					//console.log(link);
 					if ( item[item.length-1] == 'H') position = position + '<div class="image-cropper"><img src="' + link  + '" title="' + name + '" class="profile-pic2"></div>';
 					else position = position + '<div class="image-cropper"><img src="' + link + '" title="' + name + '" class="profile-pic"></div>';
  //innerHTML = '<p class="artistsName"> ' + json.items[i].name + '</p>' + '<div class="image-cropper"><img src=" '+ image.url + '"class="profile-pic"></div><div class="artistData"><p> Popularity: ' + popularity + '</p>';
@@ -94,4 +91,7 @@ function TopTracksOnClick () {
 		li.innerHTML = '<p>' + json.items[i].name + ' - ' + artists + position + '<div class="artistsData2"><p> Popularity: ' + popularity + '</p></div>';
 		listaTracks.appendChild(li);
 	}
+
+
+
 }

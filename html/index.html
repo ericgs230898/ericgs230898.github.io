@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Spotify</title>
+	<title>Log in</title>
 	<link rel="stylesheet" type="text/css" href="../css/preloader.css">
 	<link rel="stylesheet" type="text/css" href="../css/lista.css">
+	<link rel="stylesheet" type="text/css" href="../css/inputText.css">
 	<link rel="stylesheet" type="text/css" href="../css/menu.css">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet">
 </head>
 <body>
-
 	<nav>
 	  	<ul class="menu">
 		    <li><a class="active">Profile</a></li>
@@ -19,23 +17,19 @@
 		</ul>
 	</nav>
 
-	<div id="classLoader" class="outer">
-	  <div class="middle">
-	  	<h4 class="loadingTitle">Loading your data...</h4>
-	    <div class="inner">
-	    	<div class="preloader"></div>
-	    </div>
-	  </div>
-	</div>
-	
-	<ol id="listaRecientes">
-	</ol>
-
-
+	<h2 id="messageSaved" class="messageSavedHidden">Your token saved correctly!</h2>
 	
 
-	<script src="../js/cargarData.js" type="text/javascript"></script>
+	<h3 class="titleSection">Your Token</h3>
+	<input class="input" id="inputToken" type="text" name="Token">
+	<div><button id="buttonSave" class="button">Save</button></div>
+
+
+	<p class="pcenter"> GO to Spotify API  <a href="https://developer.spotify.com/console/get-album-tracks/" target="_blank"class="linkClass">clicking here</a> </br>
+		Click on GET TOKEN, SELECT ALL THE SCOPES and LOG IN on Spotify API </br> 
+		Then COPY the OAUTH TOKEN and paste it in the field YOUR TOKEN and CLICK SAVE </br>
+		If the TOKEN is correct and was correctly saved you can find wich are your favourite artists and tracks! </p>
 	<script src="../js/spotify.js" type="text/javascript"></script>
- 
+
 </body>
 </html>
