@@ -24,6 +24,7 @@ const SHORT_TERM = 'short_term';
 revisarUrl();
 
 function revisarUrl(){
+	let urlString = window.location.href;
 	let paramString = urlString.split('?')[1];
 	let urlParams = new URLSearchParams(paramString);
 	token = urlParams.get('access_token');
