@@ -43,7 +43,7 @@ buttonSave.onclick = function() {
 function authorize() {
   const client_id = '8650cd51b1d94e2cb9670c448b88fd46';
   const redirect_uri = 'https://ericgs230898.github.io/';
-  const scopes = 'user-top-read playlist-modify-public playlist-modify-private';
+  const scopes = 'user-top-read playlist-modify-public playlist-modify-private user-read-recently-played';
 
 // Store the date
 const d = new Date();
