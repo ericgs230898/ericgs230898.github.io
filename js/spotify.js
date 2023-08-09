@@ -21,19 +21,21 @@ const LONG_TERM = 'long_term';
 const MEDIUM_TERM = 'medium_term';
 const SHORT_TERM = 'short_term';
 
+revisarUrl();
+
+function revisarUrl(){
+	let paramString = urlString.split('?')[1];
+	let urlParams = new URLSearchParams(paramString);
+	token = urlParams.get('access_token');
+	miStorage.setItem('token', token);
+	if (token != null ) {
+		cargarData();
+	}
+}
 
 var buttonSave = document.getElementById("buttonSave");
 buttonSave.onclick = function() {
 	authorize();
-	let paramString = urlString.split('?')[1];
-    let urlParams = new URLSearchParams(paramString);
-    token = urlParams.get('access_token');
-	
-	/*token = document.getElementById("inputToken").value;
-
-	document.getElementById("messageSaved").className= "messageSaved";*/
-	miStorage.setItem('token', token);
-	cargarData();
 }
 
 function authorize() {

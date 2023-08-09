@@ -17,8 +17,8 @@ function RecentlyPlayedOnClick () {
 	var json = JSON.parse(miStorage.getItem('recentlyPlayed'));
 	console.log(json);
 	var innerHTML = "";
-	for ( var i=0; i<limit; i++ ) {
-		if ( json.items[i] != null ) {
+	if (json != null) {
+		for ( var i=0; i<limit; i++ ) {
 			var position = "";
 			var artists = "";
 			var popularity = json.items[i].track.popularity;
@@ -52,10 +52,10 @@ function RecentlyPlayedOnClick () {
 					else artists = artists + name + ", ";
 				}
 			}
+			var li = document.createElement("li");
+			li.className = 'item';
+			li.innerHTML = '<p>' + json.items[i].track.name + ' - ' + artists + position + '<div class="artistsData2"><p> Popularity: ' + popularity + '</p></div>';
+			listaRecientes.appendChild(li);
 		}
-		var li = document.createElement("li");
-		li.className = 'item';
-		li.innerHTML = '<p>' + json.items[i].track.name + ' - ' + artists + position + '<div class="artistsData2"><p> Popularity: ' + popularity + '</p></div>';
-		listaRecientes.appendChild(li);
 	}
 }
