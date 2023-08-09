@@ -28,8 +28,10 @@ window.onload = function() {
 	let urlString = window.location.href;
 	console.log(urlString);
 	let paramString = urlString.split('?')[1];
+	console.log(paramString);
 	let urlParams = new URLSearchParams(paramString);
 	token = urlParams.get('access_token');
+	console.log(token);
 	miStorage.setItem('token', token);
 	if (token != null ) {
 		cargarData();
