@@ -27,7 +27,7 @@ buttonSave.onclick = function() {
 	authorize();
 	let paramString = urlString.split('?')[1];
     let urlParams = new URLSearchParams(paramString);
-    token = urlParams.get('access_token')
+    token = urlParams.get('access_token');
 	
 	/*token = document.getElementById("inputToken").value;
 
