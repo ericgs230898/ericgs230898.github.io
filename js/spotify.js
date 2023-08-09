@@ -21,7 +21,6 @@ const LONG_TERM = 'long_term';
 const MEDIUM_TERM = 'medium_term';
 const SHORT_TERM = 'short_term';
 console.log("ENTRA WEB PRINCIPAL");
-revisarUrl();
 
 window.onload = function() {
 	console.log("REVISA URL");
