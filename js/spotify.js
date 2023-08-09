@@ -26,14 +26,11 @@ window.onload = function() {
 	console.log("REVISA URL");
 
 	let urlString = window.location.href;
-	console.log(urlString);
-	let paramString = urlString.split('?')[1];
-	console.log(paramString);
-	let urlParams = new URLSearchParams(paramString);
-	token = urlParams.get('access_token');
-	console.log(token);
-	miStorage.setItem('token', token);
-	if (token != null ) {
+	let indexOf = urlString.indexOf("access_token");
+	if ( indexOf != -1 ) {
+		let indexOfEnd = urlString.indexOf("&", indexOf);
+		let token = urlString.substring(indexOf+13,indexOfEnd);
+		miStorage.setItem('token', token);
 		cargarData();
 	}
 }
