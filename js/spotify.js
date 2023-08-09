@@ -23,10 +23,11 @@ const SHORT_TERM = 'short_term';
 console.log("ENTRA WEB PRINCIPAL");
 revisarUrl();
 
-function revisarUrl(){
+window.onload = function() {
 	console.log("REVISA URL");
 
 	let urlString = window.location.href;
+	console.log(urlString);
 	let paramString = urlString.split('?')[1];
 	let urlParams = new URLSearchParams(paramString);
 	token = urlParams.get('access_token');
