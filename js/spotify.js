@@ -33,7 +33,7 @@ buttonSave.onclick = function() {
 
 	document.getElementById("messageSaved").className= "messageSaved";*/
 	miStorage.setItem('token', token);
-	cargarData();*/
+	cargarData();
 }
 
 function authorize() {
