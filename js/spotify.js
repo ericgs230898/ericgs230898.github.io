@@ -20,10 +20,12 @@ const miStorage = window.localStorage;
 const LONG_TERM = 'long_term';
 const MEDIUM_TERM = 'medium_term';
 const SHORT_TERM = 'short_term';
-
+console.log("ENTRA WEB PRINCIPAL");
 revisarUrl();
 
 function revisarUrl(){
+	console.log("REVISA URL");
+
 	let urlString = window.location.href;
 	let paramString = urlString.split('?')[1];
 	let urlParams = new URLSearchParams(paramString);
