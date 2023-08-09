@@ -9,6 +9,7 @@ FUNCIONALITIES I WANNA HAVE
 -> SHOW 1->50 TOP TRACKS -> QUESTION - DO YOY WANT A PLAYLIST WITH THIS SONGS? -> CREATE THAT PLAYLIST
 -> SHOW 1->50 RECENTLY TRACKS PLAYED
 
+8650cd51b1d94e2cb9670c448b88fd46
 
 AVERAGE TIME TO CHARGE ALL THE DATA --> 166 ms ~= 0,2 sec 
 */
@@ -23,11 +24,38 @@ const SHORT_TERM = 'short_term';
 
 var buttonSave = document.getElementById("buttonSave");
 buttonSave.onclick = function() {
-	token = document.getElementById("inputToken").value;
+	authorize();
+	let paramString = urlString.split('?')[1];
+    let urlParams = new URLSearchParams(paramString);
+    token = urlParams.get('access_token')
+	
+	/*token = document.getElementById("inputToken").value;
 
-	document.getElementById("messageSaved").className= "messageSaved";
+	document.getElementById("messageSaved").className= "messageSaved";*/
 	miStorage.setItem('token', token);
-	cargarData();
+	cargarData();*/
+}
+
+function authorize() {
+  const client_id = '8650cd51b1d94e2cb9670c448b88fd46';
+  const redirect_uri = 'https://ericgs230898.github.io/';
+  const scopes = 'user-top-read playlist-modify-public playlist-modify-private';
+
+// Store the date
+const d = new Date();
+let date = [d.getMonth() +  1, d.getDate(), d.getFullYear()];
+date = date.join('/');
+
+  // Create a Token, and finalize it
+  // final result will lead to a humongous URL Link
+  // with the necessary stuff
+  let url = 'https://accounts.spotify.com/authorize';
+  url += '?response_type=token';
+  url += '&client_id=' + encodeURIComponent(client_id);
+  url += '&scope=' + encodeURIComponent(scopes);
+  url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
+  // Paste the final URL format
+  window.location = url;
 }
 
 function cargarData (){
