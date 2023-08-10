@@ -52,7 +52,7 @@ buttonSave.onclick = function() {
 
 buttonLogOut.onclick = function() {
 	console.log("ENTRO LOG OUT");
-	miStorage.setItem('token', null);
+	miStorage.clear();
 	buttonSave.style.visibility="block";
 	buttonLogOut.style.display="none";
 }
@@ -149,7 +149,6 @@ function cargarData (){
 		loadDataFromSpotifyDB('https://api.spotify.com/v1/me/top/tracks?time_range='+SHORT_TERM+`&limit=${50}`, function(request) {
 			miStorage.setItem('topTracksShortTerm', request.responseText);
 			getImagesFromArtists(JSON.parse(request.responseText), false);
-			//targetProxy.countInfoSaved++;
 		} );
 
 	}
@@ -157,15 +156,12 @@ function cargarData (){
 	function getTopArtistsFromUser(){
 		loadDataFromSpotifyDB('https://api.spotify.com/v1/me/top/artists?time_range='+LONG_TERM+`&limit=${50}`, function(request) {
 			miStorage.setItem('topArtistsLongTerm', request.responseText);
-			//targetProxy.countInfoSaved++;
 		} );
 		loadDataFromSpotifyDB('https://api.spotify.com/v1/me/top/artists?time_range='+MEDIUM_TERM+`&limit=${50}`, function(request) {
 			miStorage.setItem('topArtistsMediumTerm', request.responseText);
-			//targetProxy.countInfoSaved++;
 		} );
 		loadDataFromSpotifyDB('https://api.spotify.com/v1/me/top/artists?time_range='+SHORT_TERM+`&limit=${20}`, function(request) {
 			miStorage.setItem('topArtistsShortTerm', request.responseText);
-			//targetProxy.countInfoSaved++;
 		} );
 	}
 
@@ -173,7 +169,6 @@ function cargarData (){
 		loadDataFromSpotifyDB(`https://api.spotify.com/v1/me/player/recently-played?limit=${50}`, function(request) {
 			miStorage.setItem('recentlyPlayed', request.responseText);
 			getImagesFromArtists(JSON.parse(request.responseText), true);
-			//targetProxy.countInfoSaved++;
 		});	
 	}
 
