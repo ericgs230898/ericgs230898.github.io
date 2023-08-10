@@ -48,7 +48,8 @@ buttonCreatePlaylist.onclick = function() {
 		}
 		request.send();
 	}
-	loadDataFromSpotifyDB('https://api.spotify.com/v1/users/eric13rey/playlists?name=TopTracks', function(request) {
+	loadDataFromSpotifyDB('https://api.spotify.com/v1/users/'+ localStorage.getItem('id'); +'/playlists?name=TopTracks', function(request) {
+			console.log('https://api.spotify.com/v1/users/'+ localStorage.getItem('id'); +'/playlists?name=TopTracks');
 			//miStorage.setItem('topTracksLongTerm', request.responseText);
 			//getImagesFromArtists(JSON.parse(request.responseText), false);
 			//targetProxy.countInfoSaved++;
