@@ -20,24 +20,41 @@ const miStorage = window.localStorage;
 const LONG_TERM = 'long_term';
 const MEDIUM_TERM = 'medium_term';
 const SHORT_TERM = 'short_term';
-console.log("ENTRA WEB PRINCIPAL");
+
+var buttonSave = document.getElementById("buttonSave");
+var buttonLogOut = document.getElementById("buttonLogOut");
 
 window.onload = function() {
-	console.log("REVISA URL");
-
-	let urlString = window.location.href;
-	let indexOf = urlString.indexOf("access_token");
-	if ( indexOf != -1 ) {
-		let indexOfEnd = urlString.indexOf("&", indexOf);
-		let token = urlString.substring(indexOf+13,indexOfEnd);
-		miStorage.setItem('token', token);
+	console.log(miStorage.getItem('token'));
+	if (miStorage.getItem('token') != null) {
+		buttonSave.style.visibility="block";
+		buttonLogOut.style.display="none";
+		let urlString = window.location.href;
+		let indexOf = urlString.indexOf("access_token");
+		if ( indexOf != -1 ) {
+			let indexOfEnd = urlString.indexOf("&", indexOf);
+			let token = urlString.substring(indexOf+13,indexOfEnd);
+			miStorage.setItem('token', token);
+			cargarData();
+		}
+	} else {
+	    buttonLogOut.style.visibility="block";
+		buttonSave.style.display="none";
 		cargarData();
 	}
 }
 
-var buttonSave = document.getElementById("buttonSave");
 buttonSave.onclick = function() {
 	authorize();
+    buttonSave.style.display="none";
+    buttonLogOut.style.visibility="block";
+}
+
+buttonLogOut.onclick = function() {
+	console.log("ENTRO LOG OUT");
+	miStorage.setItem('token', null);
+	buttonSave.style.visibility="block";
+	buttonLogOut.style.display="none";
 }
 
 function authorize() {
