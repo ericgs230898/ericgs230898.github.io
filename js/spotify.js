@@ -1,18 +1,3 @@
-/*
-https://developer.spotify.com/console
-https://spotify-profile.herokuapp.com/recent
-https://rdrr.io/cran/spotifyr/man/get_my_recently_played.html
-https://developer.spotify.com/dashboard/applications/8650cd51b1d94e2cb9670c448b88fd46
-
-FUNCIONALITIES I WANNA HAVE
--> SHOW 1->50 TOP ARTISTS
--> SHOW 1->50 TOP TRACKS -> QUESTION - DO YOY WANT A PLAYLIST WITH THIS SONGS? -> CREATE THAT PLAYLIST
--> SHOW 1->50 RECENTLY TRACKS PLAYED
-
-8650cd51b1d94e2cb9670c448b88fd46
-
-AVERAGE TIME TO CHARGE ALL THE DATA --> 166 ms ~= 0,2 sec 
-*/
 var token;
 
 const miStorage = window.localStorage;
@@ -190,7 +175,6 @@ function cargarData (){
 		request.send();
 	}
 	
-	getUserId();
 	getTopArtistsFromUser();
 	getTopTracksFromUser();
 	getRecentlyPlayedTracksFromUser();

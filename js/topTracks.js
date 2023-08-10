@@ -34,31 +34,6 @@ lastMonth.onclick = function() {
 	TopTracksOnClick();
 }
 
-var buttonCreatePlaylist = document.getElementById("createPlaylist");
-buttonCreatePlaylist.onclick = function() {
-	var tokenAuth = 'Bearer ' + miStorage.getItem('token');
-	function loadDataFromSpotifyDB(url, callback) {
-		const request = new XMLHttpRequest();
-		request.open('get', url, true);
-		request.setRequestHeader('Accept', 'application/json');
-		request.setRequestHeader('Content-Type', 'application/json');
-		request.setRequestHeader('Authorization', tokenAuth);
-		request.onload = function () {
-			callback(request);
-		}
-		request.onreadystatechange = function () {
-			console.log("STATUS --> " + request.status);
-		}
-		request.send();
-	}
-	loadDataFromSpotifyDB('https://api.spotify.com/v1/users/'+ localStorage.getItem('id') +'/playlists?name=TopTracks', function(request) {
-			console.log('https://api.spotify.com/v1/users/'+ localStorage.getItem('id') +'/playlists?name=TopTracks');
-			//miStorage.setItem('topTracksLongTerm', request.responseText);
-			//getImagesFromArtists(JSON.parse(request.responseText), false);
-			//targetProxy.countInfoSaved++;
-		} ); //https://api.spotify.com/v1/users/me/playlists?name=%22%22&description=%22%22&public=%22false%22
-}
-
 function TopTracksOnClick () {
 	while( listaTracks.firstChild ){
   		listaTracks.removeChild( listaTracks.firstChild );
