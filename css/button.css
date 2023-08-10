@@ -1,0 +1,27 @@
+/* Estilos base para el botón */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+/* Estilos cuando el cursor está sobre el botón */
+.button:hover {
+  background-color: #1db954; /* Cambia el color de fondo */
+  color: #fff; /* Cambia el color del texto */
+  transform: scale(1.05); /* Escala ligeramente el botón */
+}
+
+/* Estilos cuando el botón está presionado */
+.button:active {
+  background-color: #2980b9; /* Cambia el color de fondo */
+  transform: scale(0.95); /* Escala ligeramente el botón */
+}

@@ -27,15 +27,18 @@ var buttonLogOut = document.getElementById("buttonLogOut");
 window.onload = function() {
 	console.log(miStorage.getItem('token'));
 	if (miStorage.getItem('token') == null) {
-		buttonSave.style.visibility="block";
-		buttonLogOut.style.display="none";
 		let urlString = window.location.href;
 		let indexOf = urlString.indexOf("access_token");
 		if ( indexOf != -1 ) {
+			buttonSave.style.visibility="none";
+			buttonLogOut.style.display="block";
 			let indexOfEnd = urlString.indexOf("&", indexOf);
 			let token = urlString.substring(indexOf+13,indexOfEnd);
 			miStorage.setItem('token', token);
 			cargarData();
+		} else {
+			buttonSave.style.visibility="block";
+			buttonLogOut.style.display="none";
 		}
 	} else {
 	    buttonLogOut.style.visibility="block";
