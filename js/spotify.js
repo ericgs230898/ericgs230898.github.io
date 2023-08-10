@@ -15,18 +15,18 @@ window.onload = function() {
 		let urlString = window.location.href;
 		let indexOf = urlString.indexOf("access_token");
 		if ( indexOf != -1 ) {
-			buttonSave.style.visibility="none";
+			buttonSave.style.display="none";
 			buttonLogOut.style.display="block";
 			let indexOfEnd = urlString.indexOf("&", indexOf);
 			let token = urlString.substring(indexOf+13,indexOfEnd);
 			miStorage.setItem('token', token);
 			cargarData();
 		} else {
-			buttonSave.style.visibility="block";
+			buttonSave.style.display="block";
 			buttonLogOut.style.display="none";
 		}
 	} else {
-	    buttonLogOut.style.visibility="block";
+	    buttonLogOut.style.display="block";
 		buttonSave.style.display="none";
 		cargarData();
 	}
@@ -34,12 +34,12 @@ window.onload = function() {
 
 buttonSave.onclick = function() {
 	buttonSave.style.display="none";
-    buttonLogOut.style.visibility="block";
+    buttonLogOut.style.display="block";
 	authorize();
 }
 
 buttonLogOut.onclick = function() {
-	buttonSave.style.visibility="block";
+	buttonSave.style.display="block";
 	buttonLogOut.style.display="none";
 	miStorage.clear();
 }
