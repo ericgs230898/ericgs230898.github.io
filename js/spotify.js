@@ -33,16 +33,15 @@ window.onload = function() {
 }
 
 buttonSave.onclick = function() {
-	authorize();
-    buttonSave.style.display="none";
+	buttonSave.style.display="none";
     buttonLogOut.style.visibility="block";
+	authorize();
 }
 
 buttonLogOut.onclick = function() {
-	console.log("ENTRO LOG OUT");
-	miStorage.clear();
 	buttonSave.style.visibility="block";
 	buttonLogOut.style.display="none";
+	miStorage.clear();
 }
 
 function authorize() {
