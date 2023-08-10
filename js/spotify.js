@@ -174,7 +174,22 @@ function cargarData (){
 			getImagesFromArtists(JSON.parse(request.responseText), true);
 		});	
 	}
-
+	
+	
+	function getUserId(){
+		const request = new XMLHttpRequest();
+		request.open('get', 'https://api.spotify.com/v1/me', true);
+		request.setRequestHeader('Accept', 'application/json');
+		request.setRequestHeader('Content-Type', 'application/json');
+		request.setRequestHeader('Authorization', tokenAuth);
+		request.onload = function () {
+			var json = JSON.parse(request.responseText);
+			console.log(json);
+		}
+		request.send();
+	}
+	
+	getUserId();
 	getTopArtistsFromUser();
 	getTopTracksFromUser();
 	getRecentlyPlayedTracksFromUser();

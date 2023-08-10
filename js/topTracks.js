@@ -36,8 +36,6 @@ lastMonth.onclick = function() {
 
 var buttonCreatePlaylist = document.getElementById("createPlaylist");
 buttonCreatePlaylist.onclick = function() {
-	console.log('entro');
-	miStorage.setItem('token', '8650cd51b1d94e2cb9670c448b88fd46');
 	var tokenAuth = 'Bearer ' + miStorage.getItem('token');
 	function loadDataFromSpotifyDB(url, callback) {
 		console.log('entro');
@@ -51,7 +49,7 @@ buttonCreatePlaylist.onclick = function() {
 		}
 		request.send();
 	}
-	loadDataFromSpotifyDB('https://api.spotify.com/v1/users/me/playlists?name=NOMBRE&description=NOMBRE2&public=false', function(request) {
+	loadDataFromSpotifyDB('https://api.spotify.com/v1/users/me/playlists?name=NOMBRE', function(request) {
 			//miStorage.setItem('topTracksLongTerm', request.responseText);
 			//getImagesFromArtists(JSON.parse(request.responseText), false);
 			//targetProxy.countInfoSaved++;
