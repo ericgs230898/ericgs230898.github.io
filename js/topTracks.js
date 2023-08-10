@@ -38,7 +38,6 @@ var buttonCreatePlaylist = document.getElementById("createPlaylist");
 buttonCreatePlaylist.onclick = function() {
 	var tokenAuth = 'Bearer ' + miStorage.getItem('token');
 	function loadDataFromSpotifyDB(url, callback) {
-		console.log('entro');
 		const request = new XMLHttpRequest();
 		request.open('get', url, true);
 		request.setRequestHeader('Accept', 'application/json');
@@ -49,7 +48,7 @@ buttonCreatePlaylist.onclick = function() {
 		}
 		request.send();
 	}
-	loadDataFromSpotifyDB('https://api.spotify.com/v1/users/me/playlists?name=NOMBRE', function(request) {
+	loadDataFromSpotifyDB('https://api.spotify.com/v1/users/eric13rey/playlists?name=TopTracks', function(request) {
 			//miStorage.setItem('topTracksLongTerm', request.responseText);
 			//getImagesFromArtists(JSON.parse(request.responseText), false);
 			//targetProxy.countInfoSaved++;

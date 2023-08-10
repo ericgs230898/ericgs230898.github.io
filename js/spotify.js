@@ -184,7 +184,7 @@ function cargarData (){
 		request.setRequestHeader('Authorization', tokenAuth);
 		request.onload = function () {
 			var json = JSON.parse(request.responseText);
-			console.log(json);
+			miStorage.set('id', json.id);
 		}
 		request.send();
 	}
