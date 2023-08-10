@@ -185,6 +185,7 @@ function cargarData (){
 		request.onload = function () {
 			var json = JSON.parse(request.responseText);
 			miStorage.setItem('id', json.id);
+			console.log(json.id);
 		}
 		request.send();
 	}
