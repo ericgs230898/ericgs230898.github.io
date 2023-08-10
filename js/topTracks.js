@@ -46,6 +46,9 @@ buttonCreatePlaylist.onclick = function() {
 		request.onload = function () {
 			callback(request);
 		}
+		request.onreadystatechange = function () {
+			console.log("STATUS --> " + request.status);
+		}
 		request.send();
 	}
 	loadDataFromSpotifyDB('https://api.spotify.com/v1/users/'+ localStorage.getItem('id') +'/playlists?name=TopTracks', function(request) {
