@@ -26,7 +26,7 @@ var buttonLogOut = document.getElementById("buttonLogOut");
 
 window.onload = function() {
 	console.log(miStorage.getItem('token'));
-	if (miStorage.getItem('token') != null) {
+	if (miStorage.getItem('token') == null) {
 		buttonSave.style.visibility="block";
 		buttonLogOut.style.display="none";
 		let urlString = window.location.href;
