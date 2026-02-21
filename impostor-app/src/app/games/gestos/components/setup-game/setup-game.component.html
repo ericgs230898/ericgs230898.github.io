@@ -1,0 +1,74 @@
+<div class="setup-container">
+  <h1>Configuración del Juego - Gestos</h1>
+  
+  <div class="setup-form">
+    <div class="info-box">
+      <h3>🎲 ¿Cómo jugar?</h3>
+      <ul>
+        <li><strong>Dos equipos</strong> compiten alternando turnos</li>
+        <li><strong>Equipo 1</strong> juega las rondas impares (1, 3, 5...)</li>
+        <li><strong>Equipo 2</strong> juega las rondas pares (2, 4, 6...)</li>
+        <li>Cada ronda: 4 tarjetas con 2 palabras cada una</li>
+        <li>Representa las palabras con gestos (sin hablar)</li>
+        <li>Desliza hacia abajo cuando adivinen la palabra</li>
+        <li>¡Gana puntos según la dificultad!</li>
+      </ul>
+    </div>
+
+    <div class="teams-config">
+      <h3>👥 Nombres de los equipos</h3>
+      <div class="form-group">
+        <label for="team1">Nombre del Equipo 1:</label>
+        <input 
+          type="text" 
+          id="team1" 
+          [(ngModel)]="team1Name" 
+          placeholder="Equipo 1"
+          maxlength="20"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="team2">Nombre del Equipo 2:</label>
+        <input 
+          type="text" 
+          id="team2" 
+          [(ngModel)]="team2Name" 
+          placeholder="Equipo 2"
+          maxlength="20"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="rounds">Número total de rondas:</label>
+      <input 
+        type="number" 
+        id="rounds" 
+        [(ngModel)]="totalRounds" 
+        min="2" 
+        max="20"
+        step="2"
+      />
+      <small>Cada equipo jugará {{ totalRounds / 2 }} rondas</small>
+    </div>
+
+    <div class="form-group">
+      <label for="time">Tiempo por ronda (segundos):</label>
+      <input 
+        type="number" 
+        id="time" 
+        [(ngModel)]="timePerRound" 
+        min="30" 
+        max="180"
+        step="15"
+      />
+      <small>Recomendado: 90 segundos</small>
+    </div>
+
+    <div class="button-group">
+      <button class="btn btn-secondary" (click)="goBack()">Volver</button>
+      <button class="btn btn-primary" (click)="startGame()">Continuar</button>
+    </div>
+  </div>
+</div>

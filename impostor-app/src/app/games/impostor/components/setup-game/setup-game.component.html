@@ -1,0 +1,33 @@
+<form class="setup-form fade-in" (ngSubmit)="avanzar()" #f="ngForm">
+	<fieldset>
+		<legend>Configuración inicial</legend>
+		<label>
+			Total de jugadores
+			<input type="number" [(ngModel)]="totalPlayers" name="totalPlayers" (change)="onTotalPlayersChange()" required min="1" max="10" />
+		</label>
+		<label>
+			Número de impostores
+			<input type="number" [(ngModel)]="impostors" name="impostors" (change)="validate()" required min="1" max="5" />
+		</label>
+		<label class="checkbox-label">
+			<input type="checkbox" [(ngModel)]="useHints" name="useHints" />
+			<span>Activar pistas para impostores</span>
+		</label>
+	</fieldset>
+
+	<div>
+		<h3 style="margin:0 0 .5rem">Nombres de jugadores</h3>
+		<div class="names-list">
+			<div *ngFor="let n of names; let i = index; trackBy: trackByIndex" class="name-item">
+				<input [(ngModel)]="names[i]" [name]="'player' + i" required />
+			</div>
+		</div>
+	</div>
+
+	<div class="error" *ngIf="errorMsg">{{ errorMsg }}</div>
+
+	<div class="action-row">
+		<button type="button" (click)="volverMenu()">Volver al menú</button>
+		<button type="button" (click)="avanzar()" [disabled]="!validate()">Avanzar</button>
+	</div>
+</form>

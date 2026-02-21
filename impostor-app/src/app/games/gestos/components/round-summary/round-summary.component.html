@@ -1,0 +1,118 @@
+<div class="summary-container">
+  <button class="exit-btn" (click)="confirmExit()" title="Salir">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+      <polyline points="16 17 21 12 16 7"></polyline>
+      <line x1="21" y1="12" x2="9" y2="12"></line>
+    </svg>
+  </button>
+  
+  <div class="header">
+    <div class="team-badge team-{{ currentTeam }}">
+      🎮 {{ currentTeamName }}
+    </div>
+    <h1 *ngIf="!isGameFinished && currentRound <= totalRounds">¡Ronda Terminada!</h1>
+    <h1 *ngIf="!isGameFinished && currentRound > totalRounds" class="extra-round-title">⚡ Ronda Extra Completada</h1>
+    <h1 *ngIf="isGameFinished" class="final-title">¡Juego Terminado!</h1>
+  </div>
+
+  <!-- Resultado final si el juego ha terminado -->
+  <div class="final-result" *ngIf="isGameFinished">
+    <div class="trophy" *ngIf="winnerTeam > 0">🏆</div>
+    <h2 *ngIf="winnerTeam > 0" class="winner-announcement">
+      ¡{{ winnerTeamName }} gana!
+    </h2>
+    <div *ngIf="winnerTeam === 0">
+      <div class="tie-icon">🤝</div>
+      <h2 class="tie-announcement">
+        ¡Empate!
+      </h2>
+      <p class="tie-message">
+        Ambos equipos tienen {{ teamScores.team1 }} puntos
+      </p>
+    </div>
+  </div>
+
+  <!-- Marcador de equipos -->
+  <div class="teams-score-section">
+    <div class="team-score-card" [class.winner]="isGameFinished && winnerTeam === 1">
+      <div class="team-name">{{ teamNames.team1 }}</div>
+      <div class="team-total-score">{{ teamScores.team1 }}</div>
+      <div class="team-label">puntos</div>
+    </div>
+    
+    <div class="vs-divider">VS</div>
+    
+    <div class="team-score-card" [class.winner]="isGameFinished && winnerTeam === 2">
+      <div class="team-name">{{ teamNames.team2 }}</div>
+      <div class="team-total-score">{{ teamScores.team2 }}</div>
+      <div class="team-label">puntos</div>
+    </div>
+  </div>
+
+  <div class="score-section">
+    <div class="round-score-title">Puntuación de esta ronda</div>
+    <div class="round-score-value">{{ round?.score || 0 }} pts</div>
+  </div>
+
+  <div class="stats-section">
+    <div class="stat-card correct">
+      <div class="stat-icon">✔</div>
+      <div class="stat-number">{{ round?.correctCards || 0 }}</div>
+      <div class="stat-label">Aciertos</div>
+    </div>
+    
+    <div class="stat-card failed">
+      <div class="stat-icon">✖</div>
+      <div class="stat-number">{{ round?.failedCards || 0 }}</div>
+      <div class="stat-label">Fallos</div>
+    </div>
+  </div>
+
+  <div class="cards-review">
+    <h2>Resumen de tarjetas</h2>
+    
+    <div class="cards-list">
+      <div 
+        *ngFor="let card of round?.cards"
+        class="card-review-item"
+        [class.correct]="card.isCorrect"
+        [class.failed]="!card.isCorrect"
+      >
+        <div class="card-review-badge" [style.background-color]="difficultyConfig[card.difficulty].color">
+          {{ difficultyConfig[card.difficulty].icon }}
+        </div>
+        
+        <div class="card-review-content">
+          <div class="card-review-word">{{ card.selectedWord }}</div>
+          <div class="card-review-difficulty">
+            {{ difficultyConfig[card.difficulty].label }}
+            <span *ngIf="card.isCorrect">
+              (+{{ difficultyConfig[card.difficulty].points }} pts)
+            </span>
+          </div>
+        </div>
+        
+        <div class="card-review-result">
+          <span *ngIf="card.isCorrect" class="result-icon correct">✔</span>
+          <span *ngIf="!card.isCorrect" class="result-icon failed">✖</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-secondary" (click)="goToMenu()">
+      Volver al menú
+    </button>
+    <button class="btn btn-primary" *ngIf="!isGameFinished" (click)="nextRound()">
+      Siguiente ronda
+    </button>
+    <button class="btn btn-primary" *ngIf="isGameFinished && winnerTeam === 0" (click)="playTiebreaker()">
+      Ronda de desempate
+    </button>
+    <button class="btn btn-primary" *ngIf="isGameFinished && winnerTeam > 0" (click)="playAgain()">
+      Jugar de nuevo
+    </button>
+  </div>
+</div>

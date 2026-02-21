@@ -1,0 +1,43 @@
+<div class="cards-wrapper surface fade-in">
+	<div class="toolbar">
+		<h2>Tarjetas de jugadores</h2>
+		<div class="actions-inline">
+			<button class="btn-outline" (click)="editarParametros()">Modificar parámetros</button>
+			<button (click)="nuevaRonda()">Nueva ronda</button>
+		</div>
+	</div>
+	<div class="grid">
+		<app-player-card *ngFor="let p of players" [player]="p" (open)="openPlayer($event)"></app-player-card>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop" *ngIf="selected">
+	<div class="modal surface" [class.impostor]="selected.role === 'Impostor'" [class.normal]="selected.role === 'Jugador normal'">
+		<div class="role-header">
+			<span class="role-icon">{{ selected.role === 'Impostor' ? '🎭' : '👤' }}</span>
+			<h3>{{ selected.name }}</h3>
+		</div>
+		<div class="role-reveal">
+			<span class="role-label">Tu rol es</span>
+			<div class="role-badge">{{ selected.role }}</div>
+		</div>
+		<div class="word-section" *ngIf="selected.role === 'Jugador normal' && selected.word">
+			<span class="word-label">Tu palabra secreta es</span>
+			<div class="word-display">{{ selected.word }}</div>
+		</div>
+		<div class="impostor-hint" *ngIf="selected.role === 'Impostor'">
+			<span class="hint-icon">⚠️</span>
+			<p>No conoces la palabra secreta. Intenta descubrir cuál es sin que te descubran.</p>
+			<div class="hint-section" *ngIf="selected.hint">
+				<span class="word-label">Tu pista es</span>
+				<div class="word-display hint">{{ selected.hint }}</div>
+			</div>
+		</div>
+		<div class="actions">
+			<button (click)="closeModal(true)">Aceptar</button>
+			<button class="btn-outline" (click)="closeModal(false)">Cerrar sin marcar</button>
+		</div>
+		<small class="text-muted">La tarjeta quedará bloqueada solo si aceptas.</small>
+	</div>
+</div>

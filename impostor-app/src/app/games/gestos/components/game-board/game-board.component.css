@@ -1,0 +1,428 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding: 12px 12px 10px 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.exit-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: rgba(244, 67, 54, 0.3);
+  border: 2px solid rgba(244, 67, 54, 0.5);
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  z-index: 100;
+}
+
+.exit-btn:hover {
+  background: rgba(244, 67, 54, 0.5);
+  border-color: rgba(244, 67, 54, 0.8);
+  transform: scale(1.1);
+}
+
+.exit-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.game-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+  padding-top: 4px;
+}
+
+.round-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  padding-top: 2px;
+}
+
+.team-badge {
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: glow 2s infinite;
+}
+
+.team-badge.team-1 {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  color: white;
+}
+
+.team-badge.team-2 {
+  background: linear-gradient(135deg, #4E8EF7, #667EEA);
+  color: white;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
+  50% { box-shadow: 0 4px 25px rgba(255, 255, 255, 0.5); }
+}
+
+.round-number {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 20px;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.round-number.extra-round {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #000;
+  font-weight: bold;
+  animation: glowPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+  }
+}
+
+.scores-display {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.team-score {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 100px;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.team-score.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.team-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.team-points {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.game-header h1 {
+  margin: 0 0 20px 0;
+  font-size: 2rem;
+}
+
+/* Barra de tiempo */
+.timer-bar-container {
+  position: relative;
+  width: 100%;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.timer-bar-container.warning {
+  animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.timer-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50 0%, #FFC107 50%, #F44336 100%);
+  transition: width 1s linear;
+  border-radius: 20px;
+}
+
+.timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Grid de tarjetas - maximizado */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  flex: 1;
+  margin: 10px 0 8px 0;
+  position: relative;
+  min-height: 0;
+}
+
+.card-wrapper {
+  position: relative;
+  /* altura dinámica según el grid */
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 15px;
+  padding: 14px 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  cursor: grab;
+  touch-action: none;
+  box-sizing: border-box;
+}
+
+.card.dragging {
+  cursor: grabbing;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card.shaking {
+  animation: shake 1s ease-in-out;
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+}
+
+.card.completed {
+  display: none;
+}
+
+.card-difficulty {
+  font-size: 1.1rem;
+  font-weight: bold;
+  opacity: 0.9;
+}
+
+.card-word {
+  font-size: clamp(2rem, 6vw, 2.5rem);
+  font-weight: bold;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.card-swipe-hint {
+  text-align: center;
+  opacity: 0.8;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  10% { transform: translateX(-10px) rotate(-2deg); }
+  20% { transform: translateX(10px) rotate(2deg); }
+  30% { transform: translateX(-10px) rotate(-2deg); }
+  40% { transform: translateX(10px) rotate(2deg); }
+  50% { transform: translateX(-10px) rotate(-2deg); }
+  60% { transform: translateX(10px) rotate(2deg); }
+  70% { transform: translateX(-10px) rotate(-2deg); }
+  80% { transform: translateX(10px) rotate(2deg); }
+  90% { transform: translateX(-5px) rotate(-1deg); }
+}
+
+.swipe-arrow {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.swipe-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Resultado de la tarjeta */
+.card-result {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.result-icon {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.result-icon.correct {
+  color: #4CAF50;
+}
+
+.result-icon.failed {
+  color: #F44336;
+}
+
+/* Marcador de puntuación - comprimido */
+.score-display {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.score-item {
+  text-align: center;
+}
+
+.score-label {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.score-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.score-value.correct {
+  color: #4CAF50;
+}
+
+/* Responsive: teléfonos vertical <=600px */
+@media (max-width: 600px) {
+  .game-container { padding: 6px 6px 4px 6px; }
+  .game-header { margin-bottom: 6px; }
+  .round-info { gap: 6px; margin-bottom: 4px; }
+  .team-badge { padding: 4px 10px; font-size: .8rem; }
+  .round-number { padding: 2px 8px; font-size: .65rem; }
+  .scores-display { gap: 8px; margin-bottom: 4px; }
+  .team-score { padding: 4px 6px; min-width: unset; }
+  .team-label { font-size: .6rem; }
+  .team-points { font-size: .9rem; }
+  .timer-bar-container { height: 22px; border-radius: 11px; }
+  .timer-bar { border-radius: 11px; }
+
+  .cards-grid { gap: 6px; margin: 6px 0 4px; }
+  .card { padding: 10px 8px; }
+  .card-difficulty { font-size: 1rem; }
+  .card-word { font-size: clamp(1.6rem, 5.5vw, 2.2rem); padding: 3px; }
+  .swipe-arrow { font-size: 1.1rem; }
+  .swipe-text { font-size: .55rem; }
+  .result-icon { font-size: 2.4rem; }
+  .score-display { padding: 8px 10px; }
+  .score-value { font-size: 1.1rem; }
+  .score-label { font-size: .55rem; }
+}
+
+/* Height compression tiers */
+@media (max-height: 560px) {
+  .timer-bar-container { height: 28px; }
+  .card-word { font-size: clamp(1.7rem, 6.2vw, 2.3rem); }
+}
+@media (max-height: 500px) {
+  .round-info { margin-bottom: 3px; }
+  .scores-display { display: none; }
+  .timer-bar-container { height: 24px; }
+  .cards-grid { gap: 5px; margin: 5px 0 3px; }
+  .card { padding: 8px 6px; }
+  .card-difficulty { font-size: .8rem; }
+  .card-word { font-size: clamp(1.5rem, 5.8vw, 2rem); }
+  .result-icon { font-size: 2rem; }
+}
+@media (max-height: 460px) {
+  .game-header h1 { font-size: 1.4rem; }
+  .card-word { font-size: clamp(1.3rem, 5.2vw, 1.7rem); }
+  .swipe-arrow { font-size: .9rem; }
+}
+@media (max-height: 420px) {
+  .round-number { display: none; }
+  .team-badge { font-size: .7rem; padding: 3px 8px; }
+  .cards-grid { gap: 4px; margin: 4px 0 2px; }
+  .card { padding: 6px 5px; }
+  .card-word { font-size: clamp(1.1rem, 4.8vw, 1.5rem); }
+  .result-icon { font-size: 1.6rem; }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .cards-grid {
+    gap: 20px;
+  }
+}
+

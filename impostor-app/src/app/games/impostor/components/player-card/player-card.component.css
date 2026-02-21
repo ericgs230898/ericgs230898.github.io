@@ -1,0 +1,21 @@
+.card{
+  all: unset;
+  background:var(--color-surface);
+  border:1px solid var(--color-border);
+  padding:.85rem;
+  border-radius:var(--radius-md);
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:.35rem;
+  box-shadow:var(--shadow-sm);
+  transition:transform .25s,box-shadow .25s;
+  box-sizing: border-box;
+  text-align: left;
+  width: 100%;
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.card.locked{background:var(--color-surface-alt);border-color:#475569;color:var(--color-muted);cursor:not-allowed;filter:grayscale(0.7);box-shadow:none;transform:none}
+.name{font-weight:600;font-size:.9rem;letter-spacing:.4px}
+.status{font-size:.65rem;text-transform:uppercase;background:#475569;color:#fff;padding:3px 7px;border-radius:var(--radius-sm);font-weight:600;letter-spacing:.5px}

@@ -1,0 +1,92 @@
+<div class="game-container">
+  <button class="exit-btn" (click)="confirmExit()" title="Salir">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+      <polyline points="16 17 21 12 16 7"></polyline>
+      <line x1="21" y1="12" x2="9" y2="12"></line>
+    </svg>
+  </button>
+  
+  <div class="game-header">
+    <div class="round-info">
+      <div class="team-badge team-{{ currentTeam }}">
+        🎮 {{ currentTeamName }}
+      </div>
+      <div class="round-number" *ngIf="!isExtraRound()">Ronda {{ currentRound }}/{{ totalRounds }}</div>
+      <div class="round-number extra-round" *ngIf="isExtraRound()">⚡ Ronda Extra</div>
+    </div>
+    
+    <div class="scores-display">
+      <div class="team-score" [class.active]="currentTeam === 1">
+        <span class="team-label">{{ teamNames.team1 }}</span>
+        <span class="team-points">{{ teamScores.team1 }}</span>
+      </div>
+      <div class="team-score" [class.active]="currentTeam === 2">
+        <span class="team-label">{{ teamNames.team2 }}</span>
+        <span class="team-points">{{ teamScores.team2 }}</span>
+      </div>
+    </div>
+    
+    <!-- Barra de tiempo -->
+    <div class="timer-bar-container" [class.warning]="isTimerWarning">
+      <div class="timer-bar" [style.width.%]="timeProgress"></div>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div 
+      *ngFor="let cardPos of cardPositions; let i = index"
+      class="card-wrapper"
+    >
+      <!-- Tarjeta -->
+      <div 
+        class="card"
+        [class.completed]="cardPos.card.isCompleted"
+        [class.dragging]="cardPos.isDragging"
+        [class.shaking]="cardPos.isShaking"
+        [style]="getCardStyle(cardPos)"
+        [style.background-color]="difficultyConfig[cardPos.card.difficulty].color"
+        (touchstart)="onTouchStart($event, i)"
+        (touchmove)="onTouchMove($event, i)"
+        (touchend)="onTouchEnd($event, i)"
+        (mousedown)="onMouseDown($event, i)"
+        (mousemove)="cardPos.isDragging && onMouseMove($event, i)"
+        (mouseup)="onMouseUp($event, i)"
+        (mouseleave)="cardPos.isDragging && onMouseUp($event, i)"
+      >
+          <div class="card-difficulty-label gameplay-label">
+            {{ difficultyConfig[cardPos.card.difficulty].icon }} {{ difficultyConfig[cardPos.card.difficulty].label }}
+          </div>
+          <div class="card-word gameplay-word">
+            {{ cardPos.card.selectedWord }}
+          </div>
+          <div class="card-swipe-hint" *ngIf="!cardPos.card.isCompleted && !cardPos.isFalling">
+            <div class="swipe-arrow">↑</div>
+            <div class="swipe-text">Desliza hacia arriba</div>
+          </div>
+      </div>
+
+      <!-- Marcador cuando la tarjeta desaparece -->
+      <div class="card-result" *ngIf="cardPos.card.isCompleted">
+        <div class="result-icon correct" *ngIf="cardPos.card.isCorrect">
+          ✔
+        </div>
+        <div class="result-icon failed" *ngIf="!cardPos.card.isCorrect">
+          ✖
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="score-display">
+    <div class="score-item">
+      <span class="score-label">Aciertos:</span>
+      <span class="score-value correct">{{ round?.correctCards || 0 }}</span>
+    </div>
+    <div class="score-item">
+      <span class="score-label">Puntos:</span>
+      <span class="score-value">{{ round?.score || 0 }}</span>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,80 @@
+<div class="selection-container">
+  <div class="header">
+    <button class="exit-btn" (click)="confirmExit()" title="Salir">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+        <polyline points="16 17 21 12 16 7"></polyline>
+        <line x1="21" y1="12" x2="9" y2="12"></line>
+      </svg>
+    </button>
+    <div class="team-badge team-{{ currentTeam }}">
+      🎮 {{ currentTeamName }}
+    </div>
+    <h1>Selecciona tus palabras</h1>
+    <p class="subtitle">Ronda {{ currentRound }} de {{ totalRounds }} | Elige una palabra de cada tarjeta</p>
+  </div>
+
+  <div class="slots-grid">
+    <div 
+      *ngFor="let card of selectedCards; let i = index" 
+      class="slot"
+      [class.filled]="card !== null"
+      (click)="openCardSelection(i)"
+    >
+      <div *ngIf="card === null" class="slot-empty">
+        <div class="slot-icon">+</div>
+        <div class="slot-text">Seleccionar tarjeta</div>
+      </div>
+      
+      <div *ngIf="card !== null" class="slot-filled" [style.background-color]="difficultyConfig[card.difficulty].color">
+        <div class="card-difficulty-label">
+          {{ difficultyConfig[card.difficulty].icon }} {{ difficultyConfig[card.difficulty].label }}
+        </div>
+        <div class="card-word">{{ card.selectedWord }}</div>
+        <div class="card-checkmark">✓</div>
+      </div>
+    </div>
+  </div>
+
+  <button 
+    class="start-btn" 
+    [disabled]="!canStartRound()"
+    (click)="startRound()"
+  >
+    {{ canStartRound() ? 'Iniciar Ronda' : 'Completa las 4 tarjetas' }}
+  </button>
+
+  <!-- Modal de selección de palabra -->
+  <div class="modal-overlay" *ngIf="showSelectionModal" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()" *ngIf="currentCardForSelection">
+      <div class="modal-header" [style.background-color]="difficultyConfig[currentCardForSelection.difficulty].color">
+        <h2>{{ difficultyConfig[currentCardForSelection.difficulty].label }}</h2>
+        <p>{{ difficultyConfig[currentCardForSelection.difficulty].icon }}</p>
+      </div>
+      
+      <div class="modal-body">
+        <p class="modal-instruction">Elige una de las dos palabras:</p>
+        
+        <div class="word-options">
+          <button 
+            class="word-option" 
+            (click)="selectWord(currentCardForSelection.word1)"
+            [style.border-color]="difficultyConfig[currentCardForSelection.difficulty].color"
+          >
+            <span class="word-text">{{ currentCardForSelection.word1 }}</span>
+          </button>
+          
+          <button 
+            class="word-option" 
+            (click)="selectWord(currentCardForSelection.word2)"
+            [style.border-color]="difficultyConfig[currentCardForSelection.difficulty].color"
+          >
+            <span class="word-text">{{ currentCardForSelection.word2 }}</span>
+          </button>
+        </div>
+      </div>
+      
+      <button class="modal-close" (click)="closeModal()">Cancelar</button>
+    </div>
+  </div>
+</div>

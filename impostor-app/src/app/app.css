@@ -1,0 +1,13 @@
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+}

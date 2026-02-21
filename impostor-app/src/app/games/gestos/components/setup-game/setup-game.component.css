@@ -1,0 +1,178 @@
+.setup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100dvh;
+  padding: 16px 16px 12px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-sizing: border-box;
+  overflow: visible; /* allow page scroll here */
+}
+
+h1 {
+  margin-bottom: 18px;
+  color: white;
+  text-align: center;
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+}
+
+.setup-form {
+  background: white;
+  padding: 22px 22px 18px 22px;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 0 0 auto;
+  /* allow form to grow; page will scroll */
+}
+
+.info-box {
+  background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.info-box h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.info-box ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #555;
+}
+
+.info-box li {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.teams-config {
+  background: linear-gradient(135deg, #fff3e0 0%, #fce4ec 100%);
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.teams-config h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-group small {
+  display: block;
+  margin-top: 5px;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+.btn-secondary {
+  background-color: #757575;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #616161;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.5rem; margin-bottom: 14px; }
+  .setup-form { min-width: auto; width: 100%; padding: 18px 18px 14px 18px; gap: 14px; }
+  .info-box, .teams-config { padding: 12px 14px; }
+  .form-group { margin-bottom: 12px; }
+  .btn { padding: 10px 16px; font-size: 0.9rem; }
+}
+
+/* Height compression */
+@media (max-height: 700px) {
+  h1 { font-size: 1.6rem; }
+}
+@media (max-height: 620px) {
+  .setup-container { padding: 12px 12px 8px 12px; }
+  .setup-form { padding: 18px 18px 14px 18px; }
+}
+@media (max-height: 560px) {
+  h1 { font-size: 1.4rem; }
+  .info-box ul { font-size: 0.85rem; }
+  .teams-config h3 { font-size: 1rem; }
+  .form-group label { font-size: 0.85rem; }
+  .form-group input { padding: 10px; font-size: 14px; }
+}
+/* When extremely short heights, keep scroll rather than hiding too much */
+@media (max-height: 500px) {
+  h1 { font-size: 1.25rem; }
+  .info-box, .teams-config { padding: 10px 12px; }
+  .btn { padding: 8px 12px; font-size: 0.8rem; }
+}
+@media (max-height: 460px) {
+  .info-box ul { display: none; }
+  .form-group small { font-size: 0.7rem; }
+}
+/* Remove aggressive hiding below 420px to keep content accessible via page scroll */

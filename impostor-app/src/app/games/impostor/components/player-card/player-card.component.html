@@ -1,0 +1,9 @@
+<button 
+  class="card" 
+  (click)="handleClick()"
+  [class.locked]="player.revealed">
+  <div class="name">{{ player.name }}</div>
+  @if (player.revealed) {
+    <div class="status">🔒 Bloqueada</div>
+  }
+</button>

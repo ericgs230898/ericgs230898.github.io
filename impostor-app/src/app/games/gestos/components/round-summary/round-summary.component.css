@@ -1,0 +1,533 @@
+.summary-container {
+  min-height: 100dvh; /* use dynamic viewport height to avoid iOS/Android bars causing scroll */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 16px 16px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden; /* prevent outer scroll */
+}
+
+.exit-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: rgba(244, 67, 54, 0.3);
+  border: 2px solid rgba(244, 67, 54, 0.5);
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+  z-index: 100;
+}
+
+.exit-btn:hover {
+  background: rgba(244, 67, 54, 0.5);
+  border-color: rgba(244, 67, 54, 0.8);
+  transform: scale(1.1);
+}
+
+.exit-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.header {
+  text-align: center;
+  color: white;
+  margin-bottom: 18px;
+}
+
+.team-badge {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.team-badge.team-1 {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  color: white;
+}
+
+.team-badge.team-2 {
+  background: linear-gradient(135deg, #4E8EF7, #667EEA);
+  color: white;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  animation: fadeInDown 0.5s ease;
+}
+
+.final-title {
+  font-size: 3rem !important;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.extra-round-title {
+  font-size: 2.5rem !important;
+  color: #FFD700 !important;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 4px 10px rgba(0, 0, 0, 0.3);
+  animation: glowText 2s ease-in-out infinite;
+}
+
+@keyframes glowText {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.9), 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.final-result {
+  text-align: center;
+  margin-bottom: 18px;
+  animation: bounceIn 0.8s ease;
+}
+
+.trophy {
+  font-size: 5rem;
+  margin-bottom: 15px;
+  animation: rotate 2s ease-in-out infinite;
+}
+
+.tie-icon {
+  font-size: 5rem;
+  margin-bottom: 15px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes rotate {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
+.winner-announcement {
+  color: #FFD700;
+  font-size: 2.5rem;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  margin: 0;
+}
+
+.tie-announcement {
+  color: white;
+  font-size: 2.5rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  margin: 0 0 10px 0;
+}
+
+.tie-message {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  margin: 10px 0 0 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.teams-score-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.5s ease 0.3s both;
+}
+
+.team-score-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 18px 24px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  flex: 1;
+  max-width: 160px;
+  transition: all 0.3s ease;
+}
+
+.team-score-card.winner {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+}
+
+.team-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.team-score-card.winner .team-name {
+  color: white;
+}
+
+.team-total-score {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.team-score-card.winner .team-total-score {
+  color: white;
+}
+
+.team-label {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.team-score-card.winner .team-label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.vs-divider {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.score-section {
+  text-align: center;
+  margin-bottom: 20px;
+  animation: scaleIn 0.5s ease 0.5s both;
+}
+
+.round-score-title {
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 10px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.round-score-value {
+  background: white;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 13px;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #4CAF50;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Removed duplicate .score-section definition; single compressed version retained below */
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+  animation: fadeInUp 0.5s ease 0.4s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-card {
+  background: white;
+  padding: 18px 16px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card.correct {
+  border-top: 4px solid #4CAF50;
+}
+
+.stat-card.failed {
+  border-top: 4px solid #F44336;
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.stat-card.correct .stat-icon {
+  color: #4CAF50;
+}
+
+.stat-card.failed .stat-icon {
+  color: #F44336;
+}
+
+.stat-number {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.cards-review {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 18px 18px 16px 18px;
+  border-radius: 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.5s ease 0.6s both;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.cards-review h2 {
+  margin: 0 0 14px 0;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.cards-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two columns to reduce height */
+  gap: 8px;
+  align-content: start;
+}
+@media (max-width: 600px) {
+  .cards-list { grid-template-columns: 1fr; }
+}
+@media (max-height: 560px) {
+  .cards-list { grid-template-columns: 1fr; gap: 6px; }
+}
+@media (max-height: 500px) {
+  .card-review-item:nth-child(n+7) { display: none; } /* hide items beyond 6 */
+}
+@media (max-height: 460px) {
+  .card-review-item:nth-child(n+5) { display: none; } /* hide items beyond 4 */
+}
+@media (max-height: 420px) {
+  .card-review-item:nth-child(n+4) { display: none; } /* hide items beyond 3 */
+}
+
+.card-review-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.card-review-item.correct {
+  border-left-color: #4CAF50;
+  background: #f1f8f4;
+}
+
+.card-review-item.failed {
+  border-left-color: #F44336;
+  background: #fef3f2;
+}
+
+.card-review-badge {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.58rem;
+  flex-shrink: 0;
+  line-height: 1.1;
+  text-align: center;
+  padding: 3px;
+  overflow: hidden;
+  flex-wrap: wrap;
+  gap: 1px;
+}
+
+.card-review-content {
+  flex: 1;
+}
+
+.card-review-word {
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.card-review-difficulty {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.card-review-result {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.result-icon.correct {
+  color: #4CAF50;
+}
+
+.result-icon.failed {
+  color: #F44336;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  animation: fadeInUp 0.5s ease 0.8s both;
+  margin-top: auto;
+}
+
+.btn {
+  flex: 1;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary {
+  background: #4CAF50;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #45a049;
+}
+
+.btn-secondary {
+  background: #5a5a5a; /* darkened for better contrast */
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background: #616161;
+}
+
+/* Responsive width */
+@media (max-width: 600px) {
+  .header h1 { font-size: 1.8rem; }
+  .teams-score-section { gap: 12px; }
+  .team-score-card { padding: 14px 18px; max-width: 140px; }
+  .team-total-score { font-size: 2.4rem; }
+  .stats-section { grid-template-columns: 1fr 1fr; }
+  .stat-number { font-size: 2rem; }
+  .cards-review { padding: 14px 14px 12px 14px; }
+  .card-review-badge { width: 40px; height: 40px; }
+  .card-review-word { font-size: 0.95rem; }
+  .btn { padding: 12px 14px; font-size: 0.95rem; }
+}
+
+/* Height-based compression */
+@media (max-height: 700px) {
+  .header h1 { font-size: 2.1rem; }
+  .final-title { font-size: 2.4rem !important; }
+}
+@media (max-height: 620px) {
+  .team-total-score { font-size: 2.2rem; }
+  .round-score-value { font-size: 1.5rem; padding: 10px 26px; }
+  .stat-number { font-size: 1.8rem; }
+  .card-review-result { font-size: 1.4rem; }
+}
+@media (max-height: 560px) {
+  .header h1 { font-size: 1.8rem; }
+  .teams-score-section { margin-bottom: 12px; }
+  .score-section { margin-bottom: 14px; }
+  .stat-card { padding: 14px 12px; }
+  .cards-review h2 { font-size: 1.1rem; margin-bottom: 10px; }
+}
+@media (max-height: 500px) {
+  .team-score-card { padding: 12px 14px; }
+  .team-total-score { font-size: 2rem; }
+  .stat-number { font-size: 1.5rem; }
+  .card-review-badge { width: 36px; height: 36px; font-size: 0.5rem; }
+  .btn { padding: 10px 12px; font-size: 0.85rem; }
+}
+@media (max-height: 460px) {
+  .actions { flex-direction: column; }
+  .cards-review { flex: 1; }
+}
